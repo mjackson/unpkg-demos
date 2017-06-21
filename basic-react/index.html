@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+  <head>
+    <title>unpkg :: basic-react demo</title>
+  </head>
+  <body>
+    <div id="app"></div>
+
+    <script src="https://unpkg.com/react@15.5.4/dist/react.min.js"></script>
+    <script src="https://unpkg.com/react-dom@15.5.4/dist/react-dom.min.js"></script>
+    <script src="https://unpkg.com/babel-standalone@6.24.2/babel.min.js"></script>
+
+    <script type="text/babel">
+      class MyApp extends React.Component {
+        render() {
+          return <h1>Hello from React {React.version}</h1>
+        }
+      }
+
+      ReactDOM.render(
+        <MyApp/>,
+        document.getElementById('app')
+      )
+    </script>
+  </body>
+</html>
