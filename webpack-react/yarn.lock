@@ -1218,6 +1218,15 @@ domutils@1.5.1:
     dom-serializer "0"
     domelementtype "1"
 
+dynamic-cdn-webpack-plugin@^3.3.0:
+  version "3.3.0"
+  resolved "https://registry.yarnpkg.com/dynamic-cdn-webpack-plugin/-/dynamic-cdn-webpack-plugin-3.3.0.tgz#82b27109f6dd31db4ae4d0a3c0be764e8268af21"
+  dependencies:
+    babel-runtime "^6.23.0"
+    html-webpack-include-assets-plugin "0.0.7"
+    read-pkg-up "^2.0.0"
+    resolve-pkg "^1.0.0"
+
 ecc-jsbn@~0.1.1:
   version "0.1.1"
   resolved "https://registry.yarnpkg.com/ecc-jsbn/-/ecc-jsbn-0.1.1.tgz#0fc73a9ed5f0d53c38193398523ef7e543777505"
@@ -1439,7 +1448,7 @@ find-up@^1.0.0:
     path-exists "^2.0.0"
     pinkie-promise "^2.0.0"
 
-find-up@^2.1.0:
+find-up@^2.0.0, find-up@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/find-up/-/find-up-2.1.0.tgz#45d1b7e506c717ddd482775a2b77920a3c0c57a7"
   dependencies:
@@ -1680,9 +1689,9 @@ html-minifier@^3.2.3:
     relateurl "0.2.x"
     uglify-js "3.0.x"
 
-html-webpack-include-assets-plugin@0.0.5:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/html-webpack-include-assets-plugin/-/html-webpack-include-assets-plugin-0.0.5.tgz#ca38767d019189414c0e8cbaa0e8b32557031a8d"
+html-webpack-include-assets-plugin@0.0.7:
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/html-webpack-include-assets-plugin/-/html-webpack-include-assets-plugin-0.0.7.tgz#74552e41bb368931be5f609b563cde811d1e7a26"
   dependencies:
     minimatch "^3.0.3"
 
@@ -2229,15 +2238,6 @@ module-to-cdn@^3.0.1:
   dependencies:
     semver "^5.3.0"
 
-modules-cdn-webpack-plugin@^3.0.2:
-  version "3.0.2"
-  resolved "https://registry.yarnpkg.com/modules-cdn-webpack-plugin/-/modules-cdn-webpack-plugin-3.0.2.tgz#ad2145f2a571c076f1b5b713f68e8519beeb3d0e"
-  dependencies:
-    babel-runtime "^6.23.0"
-    html-webpack-include-assets-plugin "0.0.5"
-    read-pkg "^2.0.0"
-    resolve-pkg "^1.0.0"
-
 ms@0.7.1:
   version "0.7.1"
   resolved "https://registry.yarnpkg.com/ms/-/ms-0.7.1.tgz#9cd13c03adbff25b65effde7ce864ee952017098"
@@ -2719,6 +2719,13 @@ read-pkg-up@^1.0.1:
   dependencies:
     find-up "^1.0.0"
     read-pkg "^1.0.0"
+
+read-pkg-up@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-2.0.0.tgz#6b72a8048984e0c41e79510fd5e9fa99b3b549be"
+  dependencies:
+    find-up "^2.0.0"
+    read-pkg "^2.0.0"
 
 read-pkg@^1.0.0:
   version "1.1.0"

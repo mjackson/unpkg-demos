@@ -1,6 +1,6 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
-const ModulesCDNWebpackPlugin = require('modules-cdn-webpack-plugin')
+const DynamicCDNWebpackPlugin = require('dynamic-cdn-webpack-plugin')
 
 module.exports = {
   entry: './main.js',
@@ -20,7 +20,9 @@ module.exports = {
     ]
   },
   plugins: [
-    new HTMLWebpackPlugin(),
-    new ModulesCDNWebpackPlugin()
+    new HTMLWebpackPlugin({
+      title: 'unpkg-demos :: webpack-react'
+    }),
+    new DynamicCDNWebpackPlugin()
   ]
 }
