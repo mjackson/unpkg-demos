@@ -1,0 +1,18 @@
+<!doctype html>
+<html>
+  <head>
+    <title>unpkg-demos :: module-d3</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1 id="welcome-message"></h1>
+    </div>
+
+    <script type="module">
+      import { version } from 'https://unpkg.com/d3?module'
+
+      const message = document.getElementById('welcome-message')
+      message.innerHTML = `Hello from D3 version ${version}`
+    </script>
+  </body>
+</html>
