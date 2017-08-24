@@ -1,74 +1,81 @@
 <!DOCTYPE html>
-<meta charset="utf-8">
-<style>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>unpkg-demos :: module-d3</title>
+    <style>
+      .bar { fill: steelblue; }
+    </style>
+  </head>
+  <body>
+    <h1 id="message">Loading...</h1>
+    <div id="demo"></div>
 
-.bar { fill: steelblue; }
+    <script type="module">
+      import * as d3 from "https://unpkg.com/d3?module"
 
-</style>
-<body>
-  <div id="demo">Loading...</div>
-  
-<script type="module">
-import * as d3 from "https://unpkg.com/d3?module"
+      var node = document.getElementById('message')
+      node.innerHTML = `Hello from D3 version ${d3.version}`
 
-fetch("https://unpkg.com/_stats").then(res => res.json()).then(res => {
-  // set the dimensions and margins of the graph
-  var margin = { top: 20, right: 20, bottom: 30, left: 150 },
-    width = 960 - margin.left - margin.right,
-    height = 500 - margin.top - margin.bottom
+      fetch("https://unpkg.com/_stats").then(res => res.json()).then(res => {
+        // set the dimensions and margins of the graph
+        var margin = { top: 20, right: 20, bottom: 30, left: 150 },
+          width = 960 - margin.left - margin.right,
+          height = 500 - margin.top - margin.bottom
 
-  var y = d3.scaleBand().range([height, 0]).padding(0.1)
-  var x = d3.scaleLinear().range([0, width])
+        var y = d3.scaleBand().range([height, 0]).padding(0.1)
+        var x = d3.scaleLinear().range([0, width])
 
-  document.getElementById("demo").textContent = ""
-  var svg = d3
-    .select("#demo")
-    .append("svg")
-    .attr("width", width + margin.left + margin.right)
-    .attr("height", height + margin.top + margin.bottom)
-    .append("g")
-    .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
+        document.getElementById("demo").textContent = ""
+        var svg = d3
+          .select("#demo")
+          .append("svg")
+          .attr("width", width + margin.left + margin.right)
+          .attr("height", height + margin.top + margin.bottom)
+          .append("g")
+          .attr("transform", "translate(" + margin.left + "," + margin.top + ")")
 
-  let data = []
-  Object.keys(res.totals.requests.package).forEach(function(key) {
-    data.push({ name: key, requests: res.totals.requests.package[key] })
-  })
-  data = data
-    .sort((a, b) => a.requests - b.requests)
-    .slice(data.length - 10, data.length)
+        let data = []
+        Object.keys(res.totals.requests.package).forEach(function(key) {
+          data.push({ name: key, requests: res.totals.requests.package[key] })
+        })
+        data = data
+          .sort((a, b) => a.requests - b.requests)
+          .slice(data.length - 10, data.length)
 
-  x.domain([
-    0,
-    d3.max(data, function(d) {
-      return d.requests
-    })
-  ])
-  y.domain(
-    data.map(function(d) {
-      return d.name
-    })
-  )
+        x.domain([
+          0,
+          d3.max(data, function(d) {
+            return d.requests
+          })
+        ])
+        y.domain(
+          data.map(function(d) {
+            return d.name
+          })
+        )
 
-  svg
-    .selectAll(".bar")
-    .data(data)
-    .enter()
-    .append("rect")
-    .attr("class", "bar")
-    .attr("width", function(d) {
-      return x(d.requests)
-    })
-    .attr("y", function(d) {
-      return y(d.name)
-    })
-    .attr("height", y.bandwidth())
+        svg
+          .selectAll(".bar")
+          .data(data)
+          .enter()
+          .append("rect")
+          .attr("class", "bar")
+          .attr("width", function(d) {
+            return x(d.requests)
+          })
+          .attr("y", function(d) {
+            return y(d.name)
+          })
+          .attr("height", y.bandwidth())
 
-  svg
-    .append("g")
-    .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x))
+        svg
+          .append("g")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.axisBottom(x))
 
-  svg.append("g").call(d3.axisLeft(y))
-})
-</script>
-</body>
+        svg.append("g").call(d3.axisLeft(y))
+      })
+    </script>
+  </body>
+</html>
